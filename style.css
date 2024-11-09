@@ -19,3 +19,50 @@ body{
 .container{
     width: 100%;
 }
+
+.sub-container{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+}
+
+.flex{
+    display: flex;
+    align-items: center;
+}
+
+.flex-space{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.wrapper h3{
+    color: #4d0000;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.container input{
+    display: block;
+    width: 100%;
+    padding: 10px 5px;
+    border: 2px solid #990000;
+    border-radius: 5px;
+    color: #660000;
+    outline: none;
+    font-weight: 400;
+}
+
+.container input:focus{
+    border-color: #660000;
+}
+
+.total-amount-container,
+.user-amount-container{
+    background-color:#ffcccc;
+    padding: 20px 15px;
+    border-radius: 5px;
+    box-shadow: 0 10px 20px rgba(28, 0, 80, 0.06);
+}
