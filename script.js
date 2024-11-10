@@ -1,5 +1,5 @@
 let totalAmount = document.getElementById("total-amount");
-let userAmount =document.getElementById("user-amount");
+let userAmount = document.getElementById("user-amount");
 const checkAmountButton = document.getElementById("check-amount");
 const totalAmountButton = document.getElementById("total-amount-button");
 const productTitle = document.getElementById("product-title");
@@ -53,9 +53,9 @@ const disableButtons = (bool) =>{
 
 //function to modify list elements
 
-const modifyElements = (element,edit = false) =>{
+const modifyElement = (element, edit = false) => {
     let parentDiv = element.parentElement;
-    let currentBalance = balanceValue .innerText ;
+    let currentBalance = balanceValue.innerText ;
     let currentExpense = expenditureValue.innerText;
     let parentAmount = parentDiv.querySelector(".amount").innerText;
 
@@ -66,40 +66,74 @@ const modifyElements = (element,edit = false) =>{
         disableButtons(true);
     }
 
-    balanceValue.innerText =parseInt(currentBalance) +  parseInt(parentAmount);
-    expenditureValue.innerText =parseInt(currentExpense)-parseInt(parentAmount);
+    balanceValue.innerText = parseInt(currentBalance) +  parseInt(parentAmount);
+    expenditureValue.innerText = parseInt(currentExpense) - parseInt(parentAmount);
 
     parentDiv.remove();
-}
+};
 
 //function to create list
 
-const listCreater = (expenseName, expenseValue) => {
-    let sublistContent =document.getElement("div");
+const listCreator = (expenseName, expenseValue) => {
+    let sublistContent = document.createElement("div");
     sublistContent.classList.add("sublist-content", "flex-space");
 
     list.appendChild(sublistContent);
-    sublistContent.innerHTML =`<p class="product">${expenseName}</p><p class="amount">${expenseValue}</p>`;
+    sublistContent.innerHTML =`<p class="product">${expenseName}</p> <p class="amount">${expenseValue}</p>`;
     let editButton = document.createElement("button");
-    editButton.classList.add("./png/edit.png");
-    editButton.style.height = "24px";
+    editButton.classList.add("fa-solid", "fa-pen-to-square", "edit");
+    editButton.style.fontSize = "24px";
 
     editButton.addEventListener("click", () =>{
-        modifyElements(editButton,true);
+        modifyElement(editButton, true);
 
     });
 
     let deleteButton = document.createElement ("button");
 
-    deleteButton.classList.add("./png/bin.png");
-    deleteButton.style.height = "24px";
+    deleteButton.classList.add("fa-solid", "fa-trash-can", "delete");
+    deleteButton.style.fontSize = "24px";
 
     deleteButton.addEventListener("click" ,() =>{
-        modifyElements(deleteButton);
+        modifyElement(deleteButton);
     });
 
     sublistContent.appendChild(editButton);
     sublistContent.appendChild(deleteButton);
     document.getElementById("list").appendChild(sublistContent);
 
-}
+};
+
+//function to add expenses
+
+checkAmountButton.addEventListener(("click") ,() =>{
+    //empty checks
+
+    if(!userAmount.value || !productTitle.value){
+        productTitleError.classList.remove("hide");
+        return false;
+    }
+    //enable buttons
+
+    disableButtons(false);
+
+    //expense
+    let expenditure = parseInt(userAmount.value);
+
+    //total expense (existng + new)
+
+    let sum = parseInt(expenditureValue.innerText) + expenditure ;
+    expenditureValue.innerText = sum ;
+
+    //total balance (budget - total expense)
+
+    const totalBalance = tempAmount - sum;
+    balanceValue.innerText = totalBalance;
+
+    //create list 
+    listCreator(productTitle.value, userAmount.value);
+    //empty enputs 
+
+    productTitle.value = " ";
+    userAmount.value = " ";
+});

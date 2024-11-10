@@ -1,30 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Budget Calculator</title>
 
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <div class="wrapper">
         <div class="container">
             <div class="sub-container">
                 <!-- Budget -->
-                 <div class="total-amount-container">
+                <div class="total-amount-container">
                     <h3>Budget</h3>
                     <p class="hide error" id="budget-error">
                         value cannot be Empty or negative
                     </p>
-                    <input type="number" id="total-amount"  placeholder="Enter Total Amount">
+                    <input type="number" id="total-amount" placeholder="Enter Total Amount">
 
                     <button class="submit" id="total-amount-button">Set Budget</button>
-                 </div>
+                </div>
 
-                 <!-- expenditure -->
+                <!-- expenditure -->
 
-                 <div class="user-amount-container">
+                <div class="user-amount-container">
                     <h3>Expenses</h3>
 
                     <p class="hide error" id="product-title-error">
@@ -35,10 +41,10 @@
 
                     <input type="number" id="user-amount" placeholder="Enter Cost of Product">
                     <button class="submit" id="check-amount">Check Amount</button>
-                 </div>
+                </div>
             </div>
             <!-- output -->
-             <div class="output-container flex-space">
+            <div class="output-container flex-space">
                 <div>
                     <p>Total Budget</p>
                     <span id="amount">0</span>
@@ -53,7 +59,7 @@
                     <p>Balance</p>
                     <span id="balance-amount">0</span>
                 </div>
-             </div>
+            </div>
         </div>
         <!--list-->
         <div class="list">
@@ -63,4 +69,5 @@
     </div>
     <script src="./script.js"></script>
 </body>
+
 </html>
