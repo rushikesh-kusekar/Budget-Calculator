@@ -46,14 +46,14 @@ body{
 
 .container input{
     display: block;
-    width: 100%;
+    width: 95%;
     padding: 10px 5px;
     border: 2px solid #990000;
     border-radius: 5px;
     color: #660000;
     outline: none;
     font-weight: 400;
-    margin: 10px;
+    margin: 8px;
 }
 
 .container input:focus{
@@ -93,7 +93,8 @@ body{
 
 .submit{
     font-size: 16px;
-    margin-top: 16px;
+    display: block;
+    margin: 16px auto;
     background-color:  #660000;
     border: none;
     outline: none;
